@@ -1,0 +1,23 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+// middleware untuk parsing body dari request
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post('/form', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+
+  // lakukan sesuatu dengan data tersebut...
+  // seperti memasukkannya ke dalam database
+
+  res.status(200).json({ message: "Data has been received" });
+});
+
+const port = 3000;
+
+app.listen(port, () => console.log(`Server is listening on port ${port}`));
